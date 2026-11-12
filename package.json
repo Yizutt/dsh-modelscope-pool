@@ -1,0 +1,109 @@
+{
+  "name": "local-modelscope-pool",
+  "version": "0.8.0",
+  "description": "魔搭多 Key 聚合网关：无感路由（模型不变，Key 遇限流/额度不足/无权限/不存在自动换下一个）；自动识别国际版/国内版令牌；单个 Key 可禁用/停用/恢复/删除/查看；全部密钥分页浏览；模型实际拉取国际版+国内版合并成简化名、按站点分组；额度低于 2 停用到次日 00:01、多 Key 轮换、限流临时失败冷却 5 分钟，并注册为 DSH 模型供应商",
+  "license": "MIT",
+  "author": "Yizutt",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yizutt/dsh-modelscope-pool.git"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-go",
+    "modelscope",
+    "魔搭",
+    "llm-gateway",
+    "openai-compatible",
+    "key-pool"
+  ],
+  "private": false,
+  "type": "module",
+  "main": "lib/index.js",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "engines": {
+    "dsh": ">=0.2.1-rc.2 <0.3.0-0"
+  },
+  "dshGo": {
+    "v": 1,
+    "title": {
+      "zh": "魔搭 Key 池",
+      "en": "ModelScope keys"
+    },
+    "icon": "cloud",
+    "wants": [
+      "clipboard"
+    ],
+    "contributes": {
+      "composer.actions": [
+        {
+          "id": "addkey",
+          "label": {
+            "zh": "添加 Key",
+            "en": "Add key"
+          },
+          "icon": "paste"
+        },
+        {
+          "id": "open-pool",
+          "label": {
+            "zh": "Key 池",
+            "en": "Key pool"
+          },
+          "icon": "cloud"
+        }
+      ],
+      "composer.strip": [
+        {
+          "id": "pool-strip",
+          "icon": "cloud",
+          "panel": "pool"
+        }
+      ],
+      "panels": [
+        {
+          "id": "pool",
+          "title": {
+            "zh": "魔搭 Key 池",
+            "en": "ModelScope keys"
+          },
+          "icon": "cloud",
+          "placement": [
+            "session.tab",
+            "chat.panel",
+            "features"
+          ]
+        },
+        {
+          "id": "key",
+          "title": {
+            "zh": "Key 详情",
+            "en": "Key detail"
+          },
+          "icon": "info",
+          "placement": [
+            "chat.panel",
+            "features"
+          ]
+        },
+        {
+          "id": "models",
+          "title": {
+            "zh": "魔搭模型",
+            "en": "MS models"
+          },
+          "icon": "model",
+          "placement": [
+            "session.tab",
+            "chat.panel",
+            "features"
+          ]
+        }
+      ]
+    }
+  }
+}
