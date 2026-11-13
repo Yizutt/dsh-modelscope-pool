@@ -1,5 +1,6 @@
 # dsh-modelscope-pool
 
+[![npm](https://img.shields.io/npm/v/dsh-modelscope-pool.svg)](https://www.npmjs.com/package/dsh-modelscope-pool)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![dsh](https://img.shields.io/badge/dsh-%3E%3D0.2.1--rc.2-4D6BFE.svg)](https://github.com/deepseek-ai/deepseek-harness)
 [![Node](https://img.shields.io/badge/node-%3E%3D20-5FA04E.svg)](https://nodejs.org/)
@@ -117,28 +118,52 @@
 - Node.js ≥ 20
 - 一个魔搭账号和它的 API Key（`ms-` 开头），在 <https://modelscope.cn/my/myaccesstoken> 或 <https://modelscope.ai> 生成
 
-### 作为 dsh-go 原生插件安装
+### 方式一：从 npm 安装（推荐）
 
 ```bash
-# 1. 把仓库放进 dsh-go 的本地插件目录
-#    目录名必须叫 dsh-modelscope-pool（与 package.json 的 name 一致）
+dsh plugin --profile web add dsh-modelscope-pool@0.10.0
+```
+
+一条命令搞定。装好后重启 App（或让插件重新加载），网关会在 `127.0.0.1:8899` 起来。
+
+升级就是换版本号重装：
+
+```bash
+dsh plugin --profile web add dsh-modelscope-pool@<新版本>
+```
+
+> 建议写死精确版本。npm 上其他包常见的 `latest`、`^` 范围在这里没有好处——插件会监听端口、读写本机文件，版本变化值得你自己看一眼。
+
+只想要包本身、不需要 dsh 帮你装：
+
+```bash
+npm i dsh-modelscope-pool
+```
+
+> 每个版本的改动见 [Releases](https://github.com/Yizutt/dsh-modelscope-pool/releases)。
+
+### 方式二：从源码安装（要改代码时用）
+
+```bash
+# 目录名要和 package.json 的 name 一致
 mkdir -p "$DSH_HOME/dsh-go/plugins"
 cd "$DSH_HOME/dsh-go/plugins"
 git clone https://github.com/Yizutt/dsh-modelscope-pool.git dsh-modelscope-pool
 
-# 2. 装进当前 profile
 dsh plugin --profile web add "$DSH_HOME/dsh-go/plugins/dsh-modelscope-pool"
 ```
 
-装好后重启 App，或让插件重新加载。网关会在 `127.0.0.1:8899` 起来。
+装的是指向这个目录的链接，所以**目录不能删**。改完 `lib/` 里的代码需要在 App 的「引擎」页重启引擎才生效。
 
-### 只想用网关、不装 App
+### 方式三：只挂到 Harness（网页版 / 桌面版）
 
-插件本身就是一个 Cordis bundle（`package.json` 里的 `dsh.bundle.patch` 指向 `cordis.patch.yml`），所以也可以直接挂到 Harness 的 profile 里：
+插件本身就是一个 Cordis bundle（`package.json` 里的 `dsh.bundle.patch` 指向 `cordis.patch.yml`），所以不装 dsh-go 也能用：
 
 ```bash
 dsh plugin --profile web add /path/to/dsh-modelscope-pool
 ```
+
+网页版的管理页在 `http://127.0.0.1:3080/modelscope-pool`，见[网页版与桌面版](#网页版与桌面版)。
 
 ---
 
