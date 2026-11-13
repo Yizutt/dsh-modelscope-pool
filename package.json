@@ -1,6 +1,6 @@
 {
   "name": "dsh-modelscope-pool",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "description": "魔搭多 Key 聚合网关 + DSH 原生插件：模型不变，Key 遇限流、额度不足、无权限或令牌失效自动无感换下一个；自动识别国际版/国内版令牌；Key 池管理、魔粒用量、多语言界面；也可在网页版/桌面版管理。",
   "license": "MIT",
   "author": "Yizutt",
