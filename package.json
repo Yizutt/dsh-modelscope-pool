@@ -1,7 +1,7 @@
 {
   "name": "dsh-modelscope-pool",
-  "version": "0.10.3",
-  "description": "魔搭多 Key 聚合网关：无感路由（模型不变，Key 遇限流/额度不足/无权限/不存在自动换下一个）；自动识别国际版/国内版令牌；单个 Key 可禁用/停用/恢复/删除/查看；全部密钥分页浏览；模型实际拉取国际版+国内版合并成简化名、按站点分组；额度低于 2 停用到次日 00:01、多 Key 轮换、限流临时失败冷却 5 分钟，并注册为 DSH 模型供应商",
+  "version": "0.11.0",
+  "description": "魔搭多 Key 聚合网关 + DSH 原生插件：模型不变，Key 遇限流、额度不足、无权限或令牌失效自动无感换下一个；自动识别国际版/国内版令牌；Key 池管理、魔粒用量、多语言界面；也可在网页版/桌面版管理。",
   "license": "MIT",
   "author": "Yizutt",
   "repository": {
@@ -39,28 +39,7 @@
       "en": "ModelScope keys"
     },
     "icon": "cloud",
-    "wants": [
-      "clipboard"
-    ],
     "contributes": {
-      "composer.actions": [
-        {
-          "id": "addkey",
-          "label": {
-            "zh": "添加 Key",
-            "en": "Add key"
-          },
-          "icon": "paste"
-        },
-        {
-          "id": "open-pool",
-          "label": {
-            "zh": "Key 池",
-            "en": "Key pool"
-          },
-          "icon": "cloud"
-        }
-      ],
       "composer.strip": [
         {
           "id": "pool-strip",
