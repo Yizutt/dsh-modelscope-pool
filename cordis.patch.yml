@@ -1,4 +1,4 @@
 # id: any unique id; name: must equal "name" in package.json.
 - insert:
-    - id: local-modelscope-pool
-      name: local-modelscope-pool
+    - id: dsh-modelscope-pool
+      name: dsh-modelscope-pool

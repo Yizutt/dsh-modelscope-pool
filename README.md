@@ -108,13 +108,13 @@
 
 ```bash
 # 1. 把仓库放进 dsh-go 的本地插件目录
-#    目录名必须叫 local-modelscope-pool（与 package.json 的 name 一致）
+#    目录名必须叫 dsh-modelscope-pool（与 package.json 的 name 一致）
 mkdir -p "$DSH_HOME/dsh-go/plugins"
 cd "$DSH_HOME/dsh-go/plugins"
-git clone https://github.com/Yizutt/dsh-modelscope-pool.git local-modelscope-pool
+git clone https://github.com/Yizutt/dsh-modelscope-pool.git dsh-modelscope-pool
 
 # 2. 装进当前 profile
-dsh plugin --profile web add "$DSH_HOME/dsh-go/plugins/local-modelscope-pool"
+dsh plugin --profile web add "$DSH_HOME/dsh-go/plugins/dsh-modelscope-pool"
 ```
 
 装好后重启 App，或让插件重新加载。网关会在 `127.0.0.1:8899` 起来。
